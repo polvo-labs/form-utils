@@ -1,9 +1,31 @@
 import expect from 'expect'
 
-import message from 'src/index'
+import * as utils from '../src'
 
-describe('Module template', () => {
-  it('displays a welcome message', () => {
-    expect(message).toContain('Welcome to form-utils')
+describe('required', () => {
+  it('should NOT pass validation', () => {
+    expect(utils.required.validate('')).toBeTruthy()
+    expect(utils.required.validate(null)).toBeTruthy()
+    expect(utils.required.validate(undefined)).toBeTruthy()
+    expect(utils.required.validate([])).toBeTruthy()
+    expect(utils.required.validate({})).toBeTruthy()
+  })
+
+  it('should pass validation', () => {
+    expect(utils.required.validate('value')).toBeFalsy()
+    expect(utils.required.validate(true)).toBeFalsy()
+    expect(utils.required.validate(false)).toBeFalsy()
+    expect(utils.required.validate({ key: 'value' })).toBeFalsy()
+    expect(utils.required.validate(['element'])).toBeFalsy()
+  })
+})
+
+describe('email', () => {
+  it('should NOT pass validation', () => {
+    expect(utils.email.validate('test')).toBeTruthy()
+  })
+
+  it('should pass validation', () => {
+    expect(utils.email.validate('test@example.com')).toBeFalsy()
   })
 })

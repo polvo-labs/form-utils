@@ -1,13 +1,21 @@
 {
-  "name": "form-utils",
-  "version": "1.0.0",
-  "description": "Describe form-utils here",
+  "name": "@polvo-labs/form-utils",
+  "version": "0.0.1",
+  "description": "Form helpers for data validation and formatting",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
     "es",
     "lib",
     "umd"
+  ],
+  "keywords": [
+    "form",
+    "final-form",
+    "validators",
+    "formatters",
+    "mask",
+    "parsers"
   ],
   "scripts": {
     "build": "nwb build-web-module",
@@ -18,12 +26,19 @@
     "test:watch": "nwb test --server"
   },
   "dependencies": {
+    "is-email": "^1.0.0",
+    "iscpf": "^1.0.6",
+    "msk": "^1.0.3"
   },
   "devDependencies": {
-    "nwb": "0.23.x"
+    "nwb": "0.23.x",
+    "ramda": "^0.26.1"
   },
-  "author": "",
-  "homepage": "",
+  "peerDependencies": {
+    "ramda": "^0.26.1"
+  },
+  "author": "Guilherme Santiago",
+  "homepage": "https://github.com/polvo-labs/form-utils",
   "license": "MIT",
-  "repository": ""
+  "repository": "https://github.com/polvo-labs/form-utils"
 }
