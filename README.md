@@ -76,6 +76,26 @@ phone.parse('41 9-9999-9999')
 
 ### match
 
+```jsx
+<React.Fragment>
+  <Field
+    name='password'
+    label='Password'
+    component={FormField}
+    {...forms.passwordRequired}
+  />
+  <Field
+    name='password_confirm'
+    label='Password confirm'
+    component={FormField}
+    validate={forms.match.validate({
+      field: 'password',
+      message: 'Passwords do not match'
+    })}
+  />
+</React.Fragment>
+```
+
 ### cpf / cpfRequired
 
 ### phone / phoneRequired
