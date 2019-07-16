@@ -2,7 +2,7 @@ import * as validators from './validators'
 import * as formatters from './formatters'
 import * as parsers from './parsers'
 
-const createRequired = ({ parse, format, validate, ...props }) => ({
+export const createRequired = ({ parse, format, validate, ...props }) => ({
   parse,
   format,
   validate: value => validate
