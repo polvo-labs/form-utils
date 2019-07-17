@@ -5,8 +5,8 @@ import * as parsers from './parsers'
 export const createRequired = ({ parse, format, validate, ...props }) => ({
   parse,
   format,
-  validate: value => validate
-    ? validators.required(value) || validate(value)
+  validate: (value, allValues) => validate
+    ? validators.required(value) || validate(value, allValues)
     : validators.required(value),
   ...props
 })
