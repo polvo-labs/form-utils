@@ -61,3 +61,11 @@ export const cep = value => value && !/\d{8}/.test(value) &&
 export const integer = value =>
   (value && parseInt(value, 10) !== value) &&
   'Número inteiro inválido'
+
+/**
+ * Past Year.
+ */
+
+export const pastOrCurrentYear = value =>
+  (value && (parseInt(value, 10) !== value || value > (new Date()).getFullYear())) &&
+  'Ano do passado inválido'

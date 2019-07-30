@@ -39,6 +39,13 @@ export const integer = (value = '') =>
   fit(value, '999999999999')
 
 /**
+ * Year.
+ */
+
+export const year = (value = '') =>
+  fit(value, '9999')
+
+/**
  * Card Number.
  */
 

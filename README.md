@@ -106,6 +106,8 @@ phone.parse('41 9-9999-9999')
 
 ### integer / integerRequired
 
+### pastOrCurrentYear / pastOrCurrentYearRequired
+
 ### cardNumber / cardNumberRequired
 
 ### cardExpiry / cardExpiryRequired
