@@ -25,7 +25,7 @@ Each helper, is an object with the following structure:
 
 ```js
 {
-  type,
+  type, // in react native, this will be replaced by `keyboardType` or `secureTextEntry` for example
   parse,
   format,
   validate
@@ -113,6 +113,8 @@ phone.parse('41 9-9999-9999')
 ### cardExpiry / cardExpiryRequired
 
 ### cardCode / cardCodeRequired
+
+### sqlDate / sqlDateRequired
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo

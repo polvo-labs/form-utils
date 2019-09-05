@@ -1,6 +1,16 @@
 import * as validators from './validators'
 import * as formatters from './formatters'
 import * as parsers from './parsers'
+import platformSelect from 'src/platformSelect'
+
+const numberPad = platformSelect({
+  web: {
+    type: 'tel'
+  },
+  reactNative: {
+    keyboardType: 'number-pad'
+  }
+})
 
 export const createRequired = ({ parse, format, validate, ...props }) => ({
   parse,
@@ -24,8 +34,16 @@ export const required = {
  */
 
 export const email = {
-  type: 'email',
-  validate: validators.email
+  validate: validators.email,
+  ...platformSelect({
+    web: {
+      type: 'email'
+    },
+    reactNative: {
+      keyboardType: 'email-address',
+      autoCapitalize: 'none'
+    }
+  })
 }
 
 export const emailRequired = createRequired(email)
@@ -35,8 +53,15 @@ export const emailRequired = createRequired(email)
  */
 
 export const password = {
-  type: 'password',
-  validate: validators.password
+  validate: validators.password,
+  ...platformSelect({
+    web: {
+      type: 'password'
+    },
+    reactNative: {
+      secureTextEntry: true
+    }
+  })
 }
 
 export const passwordRequired = createRequired(password)
@@ -54,10 +79,10 @@ export const match = {
  */
 
 export const cpf = {
-  type: 'tel',
   format: formatters.cpf,
   parse: parsers.digits,
-  validate: validators.cpf
+  validate: validators.cpf,
+  ...numberPad
 }
 
 export const cpfRequired = createRequired(cpf)
@@ -67,10 +92,17 @@ export const cpfRequired = createRequired(cpf)
  */
 
 export const phone = {
-  type: 'tel',
   format: formatters.phone,
   parse: parsers.digits,
-  validate: validators.phone
+  validate: validators.phone,
+  ...platformSelect({
+    web: {
+      type: 'tel'
+    },
+    reactNative: {
+      keyboardType: 'phone-pad'
+    }
+  })
 }
 
 export const phoneRequired = createRequired(phone)
@@ -80,10 +112,10 @@ export const phoneRequired = createRequired(phone)
  */
 
 export const cep = {
-  type: 'tel',
   format: formatters.cep,
   parse: parsers.digits,
-  validate: validators.cep
+  validate: validators.cep,
+  ...numberPad
 }
 
 export const cepRequired = createRequired(cep)
@@ -93,9 +125,9 @@ export const cepRequired = createRequired(cep)
  */
 
 export const currency = {
-  type: 'tel',
   format: formatters.currency,
-  parse: parsers.integer
+  parse: parsers.integer,
+  ...numberPad
 }
 
 export const currencyRequired = createRequired(currency)
@@ -105,10 +137,10 @@ export const currencyRequired = createRequired(currency)
  */
 
 export const integer = {
-  type: 'tel',
   format: formatters.integer,
   parse: parsers.integer,
-  validate: validators.integer
+  validate: validators.integer,
+  ...numberPad
 }
 
 export const integerRequired = createRequired(integer)
@@ -118,10 +150,10 @@ export const integerRequired = createRequired(integer)
  */
 
 export const pastOrCurrentYear = {
-  type: 'tel',
   format: formatters.year,
   parse: parsers.integer,
-  validate: validators.pastOrCurrentYear
+  validate: validators.pastOrCurrentYear,
+  ...numberPad
 }
 
 export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
@@ -131,10 +163,17 @@ export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
  */
 
 export const cardNumber = {
-  type: 'tel',
   format: formatters.cardNumber,
   parse: parsers.digits,
-  autoComplete: 'cc-number'
+  ...platformSelect({
+    web: {
+      type: 'tel',
+      autoComplete: 'cc-number'
+    },
+    reactNative: {
+      keyboardType: 'number-pad'
+    }
+  })
 }
 
 export const cardNumberRequired = createRequired(cardNumber)
@@ -144,11 +183,18 @@ export const cardNumberRequired = createRequired(cardNumber)
  */
 
 export const cardExpiry = {
-  type: 'tel',
   format: formatters.cardExpiry,
   parse: parsers.digits,
-  autoComplete: 'cc-exp',
-  placeholder: 'MM/AA'
+  placeholder: 'MM/AA',
+  ...platformSelect({
+    web: {
+      type: 'tel',
+      autoComplete: 'cc-exp'
+    },
+    reactNative: {
+      keyboardType: 'number-pad'
+    }
+  })
 }
 
 export const cardExpiryRequired = createRequired(cardExpiry)
@@ -158,9 +204,28 @@ export const cardExpiryRequired = createRequired(cardExpiry)
  */
 
 export const cardCode = {
-  type: 'tel',
   format: formatters.cardCode,
-  autoComplete: 'cc-csc'
+  ...platformSelect({
+    web: {
+      type: 'tel',
+      autoComplete: 'cc-csc'
+    },
+    reactNative: {
+      keyboardType: 'number-pad'
+    }
+  })
 }
 
 export const cardCodeRequired = createRequired(cardCode)
+
+/**
+ * SQL Date.
+ */
+
+export const sqlDate = {
+  format: formatters.sqlDate,
+  parser: parsers.sqlDate,
+  validate: validators.sqlDate
+}
+
+export const sqlDateRequired = createRequired(sqlDate)

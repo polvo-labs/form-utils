@@ -66,3 +66,21 @@ export const cardExpiry = (value = '') =>
 
 export const cardCode = (value = '') =>
   fit(value, '9999')
+
+/**
+ * SQL Date.
+ */
+
+export const sqlDate = (value = '') => {
+  const re = /(\d{4})-(\d{2})-(\d{2})/
+  const match = value.match(re)
+
+  if (match) {
+    const year = match[1]
+    const month = match[2]
+    const day = match[3]
+    return `${day}/${month}/${year}`
+  }
+
+  return fit(value, '99/99/9999')
+}
