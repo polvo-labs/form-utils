@@ -225,7 +225,8 @@ export const cardCodeRequired = createRequired(cardCode)
 export const sqlDate = {
   format: formatters.sqlDate,
   parser: parsers.sqlDate,
-  validate: validators.sqlDate
+  validate: validators.sqlDate,
+  ...numberPad
 }
 
 export const sqlDateRequired = createRequired(sqlDate)

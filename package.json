@@ -1,6 +1,6 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Form helpers for data validation and formatting",
   "main": "lib/index.js",
   "module": "es/index.js",
