@@ -1,7 +1,7 @@
 import * as validators from './validators'
 import * as formatters from './formatters'
 import * as parsers from './parsers'
-import platformSelect from 'src/platformSelect'
+import platformSelect from './platformSelect'
 
 const numberPad = platformSelect({
   web: {
