@@ -261,3 +261,5 @@ export const birthdate = {
     }
   })
 }
+
+export const birthdateRequired = createRequired(birthdate)
