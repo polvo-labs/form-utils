@@ -1,6 +1,7 @@
 import { memoizeWith, identity, isEmpty } from 'ramda'
 import isEmail from 'is-email'
 import isCPF from 'iscpf'
+import isValidBirthdate from 'is-valid-birthdate'
 
 /**
  * Required.
@@ -75,4 +76,11 @@ export const pastOrCurrentYear = value =>
  */
 
 export const sqlDate = value => value && value.length < 10 &&
+  'Data inválida'
+
+/**
+ * Birthdate.
+ */
+
+export const birthdate = value => value && value.length < 10 && !isValidBirthdate(value) &&
   'Data inválida'

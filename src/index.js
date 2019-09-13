@@ -41,7 +41,8 @@ export const email = {
     },
     reactNative: {
       keyboardType: 'email-address',
-      autoCapitalize: 'none'
+      autoCapitalize: 'none',
+      maxLength: 255
     }
   })
 }
@@ -59,7 +60,8 @@ export const password = {
       type: 'password'
     },
     reactNative: {
-      secureTextEntry: true
+      secureTextEntry: true,
+      maxLength: 255
     }
   })
 }
@@ -100,7 +102,8 @@ export const phone = {
       type: 'tel'
     },
     reactNative: {
-      keyboardType: 'phone-pad'
+      keyboardType: 'phone-pad',
+      maxLength: 15
     }
   })
 }
@@ -153,7 +156,12 @@ export const pastOrCurrentYear = {
   format: formatters.year,
   parse: parsers.integer,
   validate: validators.pastOrCurrentYear,
-  ...numberPad
+  ...numberPad,
+  ...platformSelect({
+    reactNative: {
+      maxLength: 4
+    }
+  })
 }
 
 export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
@@ -192,7 +200,8 @@ export const cardExpiry = {
       autoComplete: 'cc-exp'
     },
     reactNative: {
-      keyboardType: 'number-pad'
+      keyboardType: 'number-pad',
+      maxLength: 5
     }
   })
 }
@@ -211,7 +220,8 @@ export const cardCode = {
       autoComplete: 'cc-csc'
     },
     reactNative: {
-      keyboardType: 'number-pad'
+      keyboardType: 'number-pad',
+      maxLength: 4
     }
   })
 }
@@ -226,7 +236,28 @@ export const sqlDate = {
   format: formatters.sqlDate,
   parse: parsers.sqlDate,
   validate: validators.sqlDate,
-  ...numberPad
+  ...numberPad,
+  ...platformSelect({
+    reactNative: {
+      maxLength: 10
+    }
+  })
 }
 
 export const sqlDateRequired = createRequired(sqlDate)
+
+/**
+ * Birthdate.
+ */
+
+export const birthdate = {
+  format: formatters.sqlDate,
+  parse: parsers.sqlDate,
+  validate: validators.birthdate,
+  ...numberPad,
+  ...platformSelect({
+    reactNative: {
+      maxLength: 10
+    }
+  })
+}
