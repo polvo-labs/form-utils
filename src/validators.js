@@ -82,5 +82,5 @@ export const sqlDate = value => value && value.length < 10 &&
  * Birthdate.
  */
 
-export const birthdate = value => value && value.length < 10 && !isValidBirthdate(value) &&
+export const birthdate = value => value && (value.length < 10 || !isValidBirthdate(value)) &&
   'Data inválida'
