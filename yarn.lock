@@ -6597,6 +6597,11 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
+telefone@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/telefone/-/telefone-1.0.1.tgz#d32302c6b47c783e96065c01ba89fb0349b50ea3"
+  integrity sha512-6qIZP/CAV5qH+HhcjYIOijbTztlJ4YcYJEw0dfiwoLaAeGQ/K81fgtnhHRD+TY3D7uudulMlXYiKdxSmrUNSLg==
+
 test-exclude@^4.2.1:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-4.2.3.tgz#a9a5e64474e4398339245a0a769ad7c2f4a97c20"

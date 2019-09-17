@@ -2,6 +2,7 @@ import { memoizeWith, identity, isEmpty } from 'ramda'
 import isEmail from 'is-email'
 import isCPF from 'iscpf'
 import isValidBirthdate from 'is-valid-birthdate'
+import telefone from 'telefone'
 
 /**
  * Required.
@@ -45,7 +46,7 @@ export const cpf = value =>
  * Phone
  */
 
-export const phone = value => value && !/\d{10,11}/.test(value) &&
+export const phone = value => value && !telefone.parse(value) &&
   'Telefone inválido'
 
 /**

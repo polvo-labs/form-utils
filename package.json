@@ -1,6 +1,6 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Form helpers for data validation and formatting",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -29,7 +29,8 @@
     "is-email": "^1.0.0",
     "is-valid-birthdate": "^0.1.0",
     "iscpf": "^1.0.6",
-    "msk": "^1.0.3"
+    "msk": "^1.0.3",
+    "telefone": "^1.0.1"
   },
   "devDependencies": {
     "nwb": "0.23.x",
