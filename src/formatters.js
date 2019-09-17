@@ -28,6 +28,7 @@ export const cep = (value = '') =>
 
 export const currency = (value = '') =>
   value.toString()
+    .replace(/\D+/g, '')
     .replace(/(\d+)(\d{2})$/, '$1,$2')
     .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 

@@ -3,6 +3,12 @@ import * as formatters from './formatters'
 import * as parsers from './parsers'
 import platformSelect from './platformSelect'
 
+export {
+  validators,
+  formatters,
+  parsers
+}
+
 const numberPad = platformSelect({
   web: {
     type: 'tel'

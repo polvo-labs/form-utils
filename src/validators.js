@@ -3,6 +3,7 @@ import isEmail from 'is-email'
 import isCPF from 'iscpf'
 import isValidBirthdate from 'is-valid-birthdate'
 import telefone from 'telefone'
+import memoize from './memoize'
 
 /**
  * Required.
@@ -90,5 +91,5 @@ export const birthdate = value => value && (value.length < 10 || !isValidBirthda
  * Length.
  */
 
-export const length = ({ min = 0, max = 255 }) => value => value && (value < min || value > max) &&
-  `Campo deve ter entre ${min} e ${max} caracteres`
+export const length = memoize(({ min = 0, max = 255 }) => value => value && (value.length < min || value.length > max) &&
+  `Campo deve ter entre ${min} e ${max} caracteres`)
