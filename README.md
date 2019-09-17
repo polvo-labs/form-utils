@@ -116,6 +116,24 @@ phone.parse('41 9-9999-9999')
 
 ### sqlDate / sqlDateRequired
 
+### birthdate / birthdateRequired
+
+### length / lengthRequired
+
+```jsx
+<React.Fragment>
+  <Field
+    name='name'
+    label='Name'
+    component={FormField}
+    {...forms.lengthRequired({
+      min: 5, // the default is 0
+      max: 100 // the default is 255
+    })}
+  />
+</React.Fragment>
+```
+
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
 
