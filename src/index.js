@@ -35,14 +35,14 @@ export const required = {
 
 export const email = {
   validate: validators.email,
+  maxLength: 255,
   ...platformSelect({
     web: {
       type: 'email'
     },
     reactNative: {
       keyboardType: 'email-address',
-      autoCapitalize: 'none',
-      maxLength: 255
+      autoCapitalize: 'none'
     }
   })
 }
@@ -55,13 +55,13 @@ export const emailRequired = createRequired(email)
 
 export const password = {
   validate: validators.password,
+  maxLength: 255,
   ...platformSelect({
     web: {
       type: 'password'
     },
     reactNative: {
-      secureTextEntry: true,
-      maxLength: 255
+      secureTextEntry: true
     }
   })
 }
@@ -84,6 +84,7 @@ export const cpf = {
   format: formatters.cpf,
   parse: parsers.digits,
   validate: validators.cpf,
+  maxLength: 14,
   ...numberPad
 }
 
@@ -97,13 +98,13 @@ export const phone = {
   format: formatters.phone,
   parse: parsers.digits,
   validate: validators.phone,
+  maxLength: 15,
   ...platformSelect({
     web: {
       type: 'tel'
     },
     reactNative: {
-      keyboardType: 'phone-pad',
-      maxLength: 15
+      keyboardType: 'phone-pad'
     }
   })
 }
@@ -118,6 +119,7 @@ export const cep = {
   format: formatters.cep,
   parse: parsers.digits,
   validate: validators.cep,
+  maxLength: 9,
   ...numberPad
 }
 
@@ -156,12 +158,8 @@ export const pastOrCurrentYear = {
   format: formatters.year,
   parse: parsers.integer,
   validate: validators.pastOrCurrentYear,
-  ...numberPad,
-  ...platformSelect({
-    reactNative: {
-      maxLength: 4
-    }
-  })
+  maxLength: 4,
+  ...numberPad
 }
 
 export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
@@ -193,6 +191,7 @@ export const cardNumberRequired = createRequired(cardNumber)
 export const cardExpiry = {
   format: formatters.cardExpiry,
   parse: parsers.digits,
+  maxLength: 5,
   placeholder: 'MM/AA',
   ...platformSelect({
     web: {
@@ -200,8 +199,7 @@ export const cardExpiry = {
       autoComplete: 'cc-exp'
     },
     reactNative: {
-      keyboardType: 'number-pad',
-      maxLength: 5
+      keyboardType: 'number-pad'
     }
   })
 }
@@ -214,14 +212,14 @@ export const cardExpiryRequired = createRequired(cardExpiry)
 
 export const cardCode = {
   format: formatters.cardCode,
+  maxLength: 4,
   ...platformSelect({
     web: {
       type: 'tel',
       autoComplete: 'cc-csc'
     },
     reactNative: {
-      keyboardType: 'number-pad',
-      maxLength: 4
+      keyboardType: 'number-pad'
     }
   })
 }
@@ -236,12 +234,8 @@ export const sqlDate = {
   format: formatters.sqlDate,
   parse: parsers.sqlDate,
   validate: validators.sqlDate,
+  maxLength: 10,
   ...numberPad,
-  ...platformSelect({
-    reactNative: {
-      maxLength: 10
-    }
-  })
 }
 
 export const sqlDateRequired = createRequired(sqlDate)
@@ -254,12 +248,22 @@ export const birthdate = {
   format: formatters.sqlDate,
   parse: parsers.sqlDate,
   validate: validators.birthdate,
-  ...numberPad,
-  ...platformSelect({
-    reactNative: {
-      maxLength: 10
-    }
-  })
+  maxLength: 10,
+  ...numberPad
 }
 
 export const birthdateRequired = createRequired(birthdate)
+
+/**
+ * Length.
+ */
+
+export const length = ({ min = 0, max = 255 }) => ({
+  maxLength: max,
+  validate: validators.length({ min, max })
+})
+
+export const lengthRequired = ({ min = 0, max = 255 }) => ({
+  maxLength: max,
+  validate: value => validators.required(value) || validators.length({ min, max })
+})

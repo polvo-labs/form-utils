@@ -85,3 +85,10 @@ export const sqlDate = value => value && value.length < 10 &&
 
 export const birthdate = value => value && (value.length < 10 || !isValidBirthdate(value)) &&
   'Data inválida'
+
+/**
+ * Length.
+ */
+
+export const length = ({ min = 0, max = 255 }) => value => value && (value < min || value > max) &&
+  `Campo deve ter entre ${min} e ${max} caracteres`
