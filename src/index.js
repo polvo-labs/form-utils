@@ -265,5 +265,5 @@ export const length = ({ min = 0, max = 255 }) => ({
 
 export const lengthRequired = ({ min = 0, max = 255 }) => ({
   maxLength: max,
-  validate: value => validators.required(value) || validators.length({ min, max })
+  validate: value => validators.required(value) || validators.length({ min, max })(value)
 })
