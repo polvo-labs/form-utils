@@ -1,4 +1,4 @@
-import { memoizeWith, identity, isEmpty } from 'ramda'
+import { isEmpty } from 'ramda'
 import isEmail from 'is-email'
 import isCPF from 'iscpf'
 import isValidBirthdate from 'is-valid-birthdate'
@@ -30,8 +30,7 @@ export const password = value =>
  * Match
  */
 
-export const match = memoizeWith(
-  identity,
+export const match = memoize(
   ({ field, message = 'Campos não batem' }) =>
     (value, allValues) => value !== allValues[field] && message
 )
