@@ -40,7 +40,7 @@ export const match = memoize(
  */
 
 export const cpf = value =>
-  !isCPF(value) && 'CPF inválido'
+  value && !isCPF(value) && 'CPF inválido'
 
 /**
  * Phone

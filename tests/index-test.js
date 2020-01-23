@@ -1,6 +1,6 @@
 import expect from 'expect'
 
-import * as utils from '../src'
+import * as utils from 'lib'
 
 describe('required', () => {
   it('should NOT pass validation', () => {
