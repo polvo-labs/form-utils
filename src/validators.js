@@ -70,7 +70,7 @@ export const integer = value =>
 
 export const pastOrCurrentYear = value =>
   (value && (parseInt(value, 10) !== value || value > (new Date()).getFullYear())) &&
-  'Ano do passado inválido'
+  'Este campo não aceita anos do futuro'
 
 /**
  * SQL Date.
