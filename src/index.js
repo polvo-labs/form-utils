@@ -168,6 +168,8 @@ export const pastOrCurrentYear = {
   ...numberPad
 }
 
+export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
+
 /**
  * Birth year.
  */
