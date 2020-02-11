@@ -2,6 +2,7 @@ import * as validators from './validators'
 import * as formatters from './formatters'
 import * as parsers from './parsers'
 import platformSelect from './platformSelect'
+import {birthYear} from './validators'
 
 export {
   validators,
@@ -168,7 +169,19 @@ export const pastOrCurrentYear = {
   ...numberPad
 }
 
-export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear)
+/**
+ * Birth year.
+ */
+
+export const birthYear = {
+  format: formatters.year,
+  parse: parsers.integer,
+  validate: validators.birthYear,
+  maxLength: 4,
+  ...numberPad
+}
+
+export const birthYearRequired = createRequired(birthYear)
 
 /**
  * Card number.

@@ -73,6 +73,17 @@ export const pastOrCurrentYear = value =>
   'Este campo não aceita anos do futuro'
 
 /**
+ * Birth year.
+ */
+
+export const birthYear = value => {
+  const currentYear = (new Date()).getFullYear()
+  const min = currentYear - 130
+  return (value && (parseInt(value, 10) !== value || value < min || value > currentYear)) &&
+    'Ano de nascimento inválido'
+}
+
+/**
  * SQL Date.
  */
 
