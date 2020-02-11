@@ -2,7 +2,6 @@ import * as validators from './validators'
 import * as formatters from './formatters'
 import * as parsers from './parsers'
 import platformSelect from './platformSelect'
-import {birthYear} from './validators'
 
 export {
   validators,
