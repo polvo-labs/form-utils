@@ -1,7 +1,5 @@
 import { pastOrCurrentYear, pastOrCurrentYearRequired } from "../src";
 
-jest.useFakeTimers().setSystemTime(new Date("2022-10-10"));
-
 test.each(["banana", "1", 20000, 3000, 2023])(
   "value %j should be considered invalid",
   (input) => {
