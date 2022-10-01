@@ -25,6 +25,16 @@ test("cpfRequired requires a value", () => {
   expect(cpfRequired.validate("")).toBe("Campo obrigatório");
 });
 
+test("parses CPF", () => {
+  expect(cpf.parse("284.185.697-60")).toBe("28418569760");
+  expect(cpfRequired.parse("762.456.439-45")).toBe("76245643945");
+});
+
+test("formats CPF", () => {
+  expect(cpf.format("91233011804")).toBe("912.330.118-04");
+  expect(cpfRequired.format("51163771643")).toBe("511.637.716-43");
+});
+
 test("sets the maxLength attribute", () => {
   expect(cpf.maxLength).toBe(14);
   expect(cpfRequired.maxLength).toBe(14);
