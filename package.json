@@ -1,6 +1,6 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "Form helpers for data validation and formatting",
   "type": "module",
   "source": "./src/index.js",
@@ -11,11 +11,6 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
-  "files": [
-    "es",
-    "lib",
-    "umd"
-  ],
   "keywords": [
     "form",
     "final-form",
