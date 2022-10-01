@@ -64,7 +64,7 @@ export const phone = (value) =>
  */
 
 export const cep = (value) =>
-  value && !/\d{8}/.test(value) && "CEP inválido";
+  value && !/^\d{8}$/.test(value) && "CEP inválido";
 
 /**
  * Integer.
