@@ -18,3 +18,15 @@ test.each(["john.doe@example.com"])(
 test("emailRequired requires a value", () => {
   expect(emailRequired.validate("")).toBe("Campo obrigatório");
 });
+
+test('[web] set the attribute type="email"', () => {
+  expect(email.web.type).toBe("email");
+  expect(emailRequired.web.type).toBe("email");
+});
+
+test('[react native] set the prop keyboardType="email-address"', () => {
+  expect(email.reactNative.keyboardType).toBe("email-address");
+  expect(emailRequired.reactNative.keyboardType).toBe(
+    "email-address"
+  );
+});

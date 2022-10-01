@@ -45,6 +45,9 @@
   "license": "MIT",
   "repository": "https://github.com/polvo-labs/form-utils",
   "jest": {
+    "setupFiles": [
+      "./tests/setupTests.js"
+    ],
     "collectCoverageFrom": [
       "src/*"
     ],

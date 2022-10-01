@@ -49,7 +49,8 @@ export const match = memoize(
  * CPF.
  */
 
-export const cpf = (value) => value && !isCPF(value) && "CPF inválido";
+export const cpf = (value) =>
+  value && !isCPF(value) && "CPF inválido";
 
 /**
  * Phone
@@ -62,7 +63,8 @@ export const phone = (value) =>
  * CEP.
  */
 
-export const cep = (value) => value && !/\d{8}/.test(value) && "CEP inválido";
+export const cep = (value) =>
+  value && !/\d{8}/.test(value) && "CEP inválido";
 
 /**
  * Integer.
@@ -77,7 +79,8 @@ export const integer = (value) =>
 
 export const pastOrCurrentYear = (value) =>
   value &&
-  (parseInt(value, 10) !== value || value > new Date().getFullYear()) &&
+  (parseInt(value, 10) !== value ||
+    value > new Date().getFullYear()) &&
   "Este campo não aceita anos do futuro";
 
 /**
@@ -89,7 +92,9 @@ export const birthYear = (value) => {
   const min = currentYear - 130;
   return (
     value &&
-    (parseInt(value, 10) !== value || value < min || value > currentYear) &&
+    (parseInt(value, 10) !== value ||
+      value < min ||
+      value > currentYear) &&
     "Ano de nascimento inválido"
   );
 };
@@ -98,14 +103,17 @@ export const birthYear = (value) => {
  * SQL Date.
  */
 
-export const sqlDate = (value) => value && value.length < 10 && "Data inválida";
+export const sqlDate = (value) =>
+  value && value.length < 10 && "Data inválida";
 
 /**
  * Birthdate.
  */
 
 export const birthdate = (value) =>
-  value && (value.length < 10 || !isValidBirthdate(value)) && "Data inválida";
+  value &&
+  (value.length < 10 || !isValidBirthdate(value)) &&
+  "Data inválida";
 
 /**
  * Length.

@@ -1,7 +1,7 @@
 import * as validators from "./validators";
 import * as formatters from "./formatters";
 import * as parsers from "./parsers";
-import platformSelect from "./platformSelect";
+import { platformSelect } from "./platformSelect";
 
 export { validators, formatters, parsers };
 
@@ -14,7 +14,12 @@ const numberPad = platformSelect({
   },
 });
 
-export const createRequired = ({ parse, format, validate, ...props }) => ({
+export const createRequired = ({
+  parse,
+  format,
+  validate,
+  ...props
+}) => ({
   parse,
   format,
   validate: (value, allValues) =>
@@ -165,7 +170,8 @@ export const pastOrCurrentYear = {
   ...numberPad,
 };
 
-export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear);
+export const pastOrCurrentYearRequired =
+  createRequired(pastOrCurrentYear);
 
 /**
  * Birth year.
@@ -283,5 +289,6 @@ export const length = ({ min = 0, max = 255 }) => ({
 export const lengthRequired = ({ min = 0, max = 255 }) => ({
   maxLength: max,
   validate: (value) =>
-    validators.required(value) || validators.length({ min, max })(value),
+    validators.required(value) ||
+    validators.length({ min, max })(value),
 });
