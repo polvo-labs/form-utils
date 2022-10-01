@@ -1,9 +1,16 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "2.0.1",
+  "version": "3.0.0-alpha.0",
   "description": "Form helpers for data validation and formatting",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "type": "module",
+  "source": "./src/index.js",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
   "files": [
     "es",
     "lib",
@@ -18,12 +25,8 @@
     "parsers"
   ],
   "scripts": {
-    "build": "nwb build-web-module",
-    "clean": "nwb clean-module",
-    "prepublishOnly": "npm run build",
-    "test": "nwb test",
-    "test:coverage": "nwb test --coverage",
-    "test:watch": "nwb test --server"
+    "build": "microbundle",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "is-email": "^1.0.0",
@@ -33,7 +36,7 @@
     "telefone": "^1.0.1"
   },
   "devDependencies": {
-    "nwb": "0.23.x",
+    "microbundle": "^0.15.1",
     "ramda": "^0.26.1"
   },
   "peerDependencies": {
