@@ -104,7 +104,7 @@ export const birthYear = (value) => {
  */
 
 export const sqlDate = (value) =>
-  value && value.length < 10 && "Data inválida";
+  value && value.length !== 10 && "Data inválida";
 
 /**
  * Birthdate.
