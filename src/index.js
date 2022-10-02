@@ -235,6 +235,7 @@ export const cardExpiryRequired = createRequired(cardExpiry);
 
 export const cardCode = {
   format: formatters.cardCode,
+  parse: parsers.digits,
   maxLength: 4,
   ...platformSelect({
     web: {
