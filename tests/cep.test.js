@@ -43,7 +43,7 @@ test('[web] set the attribute type="tel"', () => {
   expect(cepRequired.web.type).toBe("tel");
 });
 
-test('[react native] set the prop keyboardType="email-address"', () => {
+test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(cep.reactNative.keyboardType).toBe("number-pad");
   expect(cepRequired.reactNative.keyboardType).toBe("number-pad");
 });

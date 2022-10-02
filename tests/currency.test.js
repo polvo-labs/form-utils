@@ -25,7 +25,7 @@ test('[web] set the attribute type="tel"', () => {
   expect(currencyRequired.web.type).toBe("tel");
 });
 
-test('[react native] set the prop keyboardType="email-address"', () => {
+test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(currency.reactNative.keyboardType).toBe("number-pad");
   expect(currencyRequired.reactNative.keyboardType).toBe(
     "number-pad"
