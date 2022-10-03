@@ -282,12 +282,12 @@ export const birthdateRequired = createRequired(birthdate);
  * Length.
  */
 
-export const length = ({ min = 0, max = 255 }) => ({
+export const length = ({ min = 0, max = 255 } = {}) => ({
   maxLength: max,
   validate: validators.length({ min, max }),
 });
 
-export const lengthRequired = ({ min = 0, max = 255 }) => ({
+export const lengthRequired = ({ min = 0, max = 255 } = {}) => ({
   maxLength: max,
   validate: (value) =>
     validators.required(value) ||

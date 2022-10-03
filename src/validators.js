@@ -119,14 +119,17 @@ export const birthdate = (value) =>
  * Length.
  */
 
-export const length = memoize(({ min = 0, max = 255 }) => (value) => {
-  if (value) {
-    if (value.length < min) {
-      return `Campo deve ter no mínimo ${min} caracteres`;
-    }
+export const length = memoize(
+  ({ min = 0, max = 255 } = {}) =>
+    (value) => {
+      if (value) {
+        if (value.length < min) {
+          return `Campo deve ter no mínimo ${min} caracteres`;
+        }
 
-    if (value.length > max) {
-      return `Campo deve ter no máximo ${max} caracteres`;
+        if (value.length > max) {
+          return `Campo deve ter no máximo ${max} caracteres`;
+        }
+      }
     }
-  }
-});
+);
