@@ -133,3 +133,10 @@ export const length = memoize(
       }
     }
 );
+
+/**
+ * Bank Agency.
+ */
+
+export const bankAgency = (value = "") =>
+  value && !/^\d{4,5}$/.test(value) && "Agência inválida";

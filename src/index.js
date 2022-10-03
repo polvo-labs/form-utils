@@ -293,3 +293,17 @@ export const lengthRequired = ({ min = 0, max = 255 } = {}) => ({
     validators.required(value) ||
     validators.length({ min, max })(value),
 });
+
+/**
+ * Bank Agency.
+ */
+
+export const bankAgency = {
+  format: parsers.digitsWith(5),
+  parse: parsers.digitsWith(5),
+  validate: validators.bankAgency,
+  maxLength: 5,
+  ...numberPad,
+};
+
+export const bankAgencyRequired = createRequired(bankAgency);
