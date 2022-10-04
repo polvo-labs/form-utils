@@ -138,5 +138,14 @@ export const length = memoize(
  * Bank Agency.
  */
 
-export const bankAgency = (value = "") =>
+export const bankAgency = (value) =>
   value && !/^\d{4,5}$/.test(value) && "Agência inválida";
+
+/**
+ * Bank Account.
+ */
+
+export const bankAccount = (value) =>
+  value &&
+  !(/^\d+X?$/.test(value) && value.length <= 20) &&
+  "Número da conta inválido";

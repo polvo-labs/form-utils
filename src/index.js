@@ -307,3 +307,16 @@ export const bankAgency = {
 };
 
 export const bankAgencyRequired = createRequired(bankAgency);
+
+/**
+ * Bank Account.
+ */
+
+export const bankAccount = {
+  format: formatters.bankAccount,
+  parse: parsers.bankAccount,
+  validate: validators.bankAccount,
+  maxLength: 21,
+};
+
+export const bankAccountRequired = createRequired(bankAccount);

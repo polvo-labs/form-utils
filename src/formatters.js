@@ -1,4 +1,5 @@
 import { fit } from "msk";
+import { digits } from "./parsers";
 
 /**
  * CPF.
@@ -81,4 +82,27 @@ export const sqlDate = (value = "") => {
   }
 
   return fit(value, "99/99/9999");
+};
+
+/**
+ * Bank Account.
+ */
+
+export const bankAccount = (value = "") => {
+  const addDash = (account) => {
+    if (account.length > 1) {
+      const firstPart = account.slice(0, -1);
+      const secondPart = account.slice(-1);
+      return `${firstPart}-${secondPart}`;
+    }
+
+    return account;
+  };
+
+  const restrictedValue = value.slice(0, 20);
+  const lastItem = restrictedValue.slice(-1).toUpperCase();
+  const otherPart = digits(restrictedValue.slice(0, -1));
+  return /X|\d/.test(lastItem)
+    ? addDash(otherPart + lastItem)
+    : addDash(otherPart);
 };
