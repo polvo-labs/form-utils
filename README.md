@@ -7,6 +7,8 @@
 This module provides a set of helpers for validating and formatting data,
 specially made for using with react-final-form module.
 
+**[CODESANDBOX WITH EXAMPLES](https://codesandbox.io/s/polvo-labs-form-utils-demo-d3um03?file=/src/App.js)**
+
 ## Installation
 
 `yarn add @polvo-labs/form-utils ramda`
