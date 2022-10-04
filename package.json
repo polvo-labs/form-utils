@@ -4,6 +4,9 @@
   "description": "Form helpers for data validation and formatting",
   "type": "module",
   "source": "./src/index.js",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "require": "./dist/index.cjs",
     "default": "./dist/index.modern.js"
