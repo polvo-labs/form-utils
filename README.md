@@ -64,7 +64,7 @@ phone.parse("41 9-9999-9999");
 
 In order to make it work with React Native, you need to edit the `metro.config.js` file and add the following line:
 
-```
+```diff
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
