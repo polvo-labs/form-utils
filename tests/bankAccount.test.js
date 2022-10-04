@@ -38,7 +38,7 @@ test("parses bankAccount", () => {
   expect(bankAccount.parse("1-X")).toBe("1X");
   expect(bankAccount.parse("X-9")).toBe("9");
   expect(bankAccountRequired.parse("12345678-9")).toBe("123456789");
-  expect(bankAccountRequired.parse("1995-X")).toBe("1995X");
+  expect(bankAccountRequired.parse("1995-x")).toBe("1995X");
   expect(bankAccountRequired.parse("199X-3")).toBe("1993");
   expect(bankAccountRequired.parse("19X9-5")).toBe("1995");
 
@@ -48,6 +48,8 @@ test("parses bankAccount", () => {
 test("formats bankAccount", () => {
   expect(bankAccount.format("1234")).toBe("123-4");
   expect(bankAccount.format("98765")).toBe("9876-5");
+  expect(bankAccount.format("1234X")).toBe("1234-X");
+  expect(bankAccount.format("1234x")).toBe("1234-X");
   expect(bankAccountRequired.format("123456789")).toBe("12345678-9");
   expect(
     bankAccountRequired.format(
