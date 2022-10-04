@@ -60,6 +60,28 @@ phone.parse("41 9-9999-9999");
 // => '41999999999'
 ```
 
+## React Native
+
+In order to make it work with React Native, you need to edit the `metro.config.js` file and add the following line:
+
+```
+module.exports = {
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: false,
+      },
+    }),
+  },
++  resolver: {
++    sourceExts: ['jsx', 'js', 'ts', 'tsx', 'cjs', 'json'] //add here
++  },
+};
+```
+
+If your project is not written in TypeScript, you can omit the `ts` and `tsx` extensions.
+
 ## Available Helpers
 
 ### required
@@ -138,3 +160,7 @@ phone.parse("41 9-9999-9999");
 [npm]: https://www.npmjs.org/package/npm-package
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
+
+```
+
+```
