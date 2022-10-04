@@ -26,9 +26,9 @@ test("parses bankAgency", () => {
 });
 
 test("formats bankAgency", () => {
-  expect(bankAgency.parse("1234")).toBe("1234");
-  expect(bankAgency.parse("98765")).toBe("98765");
-  expect(bankAgencyRequired.parse("123456789")).toBe("12345");
+  expect(bankAgency.format("1234")).toBe("1234");
+  expect(bankAgency.format("98765")).toBe("98765");
+  expect(bankAgencyRequired.format("123456789")).toBe("12345");
 });
 
 test("sets the maxLength attribute", () => {
