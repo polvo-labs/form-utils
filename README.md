@@ -11,7 +11,7 @@ specially made for using with react-final-form module.
 
 ## Installation
 
-`yarn add @polvo-labs/form-utils ramda`
+`yarn add @polvo-labs/form-utils`
 
 ## Usage
 

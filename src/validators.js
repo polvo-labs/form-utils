@@ -1,25 +1,16 @@
-import { isEmpty } from "ramda";
 import isEmail from "is-email";
 import isCPF from "iscpf";
 import isValidBirthdate from "is-valid-birthdate";
 import telefone from "telefone";
 import memoize from "./memoize";
+import { isEmpty } from "./isEmpty";
 
 /**
  * Required.
  */
 
-const isEmptyString = (value) => {
-  if (typeof value === "string" && value.trim() === "") {
-    return true;
-  }
-
-  return false;
-};
-
 export const required = (value) =>
-  (isEmpty(value) || value == null || isEmptyString(value)) &&
-  "Campo obrigatório";
+  isEmpty(value) && "Campo obrigatório";
 
 /**
  * E-mail.

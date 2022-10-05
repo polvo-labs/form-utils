@@ -1,6 +1,6 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "3.0.0-alpha.5",
+  "version": "3.0.0-alpha.6",
   "description": "Form helpers for data validation and formatting",
   "type": "module",
   "source": "./src/index.js",
@@ -37,11 +37,7 @@
   },
   "devDependencies": {
     "jest": "^29.1.2",
-    "microbundle": "^0.15.1",
-    "ramda": "^0.26.1"
-  },
-  "peerDependencies": {
-    "ramda": "^0.26.1"
+    "microbundle": "^0.15.1"
   },
   "author": "Guilherme Santiago",
   "homepage": "https://github.com/polvo-labs/form-utils",
