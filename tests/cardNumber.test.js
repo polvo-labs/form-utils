@@ -29,7 +29,10 @@ test("formats amex card number", () => {
   );
 });
 
-test.todo("sets the maxLength attribute");
+test("sets the maxLength attribute", () => {
+  expect(cardNumber.maxLength).toBe(44);
+  expect(cardNumberRequired.maxLength).toBe(44);
+});
 
 test("[web] set the correct attributes for card number data", () => {
   const attrs = {

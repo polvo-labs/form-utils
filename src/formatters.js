@@ -99,9 +99,8 @@ export const bankAccount = (value = "") => {
     return account;
   };
 
-  const restrictedValue = value.slice(0, 20);
-  const lastItem = restrictedValue.slice(-1).toUpperCase();
-  const otherPart = digits(restrictedValue.slice(0, -1));
+  const lastItem = value.slice(-1).toUpperCase();
+  const otherPart = digits(value.slice(0, -1));
   return /X|\d/.test(lastItem)
     ? addDash(otherPart + lastItem)
     : addDash(otherPart);

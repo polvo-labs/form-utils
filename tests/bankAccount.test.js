@@ -55,7 +55,12 @@ test("formats bankAccount", () => {
     bankAccountRequired.format(
       "1234567890987654321234567899877665623423423432432421"
     )
-  ).toBe("1234567890987654321-2");
+  ).toBe("12345678909876543212-3");
+  expect(
+    bankAccountRequired.format(
+      "0980486049802341319-3801238120931312399103"
+    )
+  ).toBe("0980486049802341319-3");
 });
 
 test("sets the maxLength attribute", () => {
