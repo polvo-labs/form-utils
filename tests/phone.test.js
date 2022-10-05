@@ -6,7 +6,7 @@ test.each([
   "999334455",
   "abc",
   "00000000000",
-  "99999999999",
+  "00999999999",
 ])("value %j should be considered invalid", (input) => {
   expect(phone.validate(input)).toBe("Telefone inválido");
 });

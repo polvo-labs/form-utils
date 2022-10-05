@@ -1013,6 +1013,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@brazilian-utils/brazilian-utils@^1.0.0-rc.12":
+  version "1.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/brazilian-utils/-/brazilian-utils-1.0.0-rc.12.tgz#1ab9dd02bc7cf9cd999a651eb315a0326b6f490b"
+  integrity sha512-gR5TbSKTgFgDe0/ZghgwqCEryLbHjwdEpvr3ao/Z0f8zRu6LD3lif0HJ3eQiC3pJSwtUPyA+97vm1IEqZkYSTA==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -2599,10 +2604,6 @@ is-docker@^2.0.0, is-docker@^2.1.1:
   resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.2.1.tgz#33eeabe23cfe86f14bde4408a02c0cfb853acdaa"
   integrity sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==
 
-is-email@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-email/-/is-email-1.0.0.tgz#6e02d4145dd6246fa05eea16bfe0b2b843ac2802"
-
 is-fullwidth-code-point@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
@@ -2700,10 +2701,6 @@ is-wsl@^2.2.0:
   integrity sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==
   dependencies:
     is-docker "^2.0.0"
-
-iscpf@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/iscpf/-/iscpf-1.0.6.tgz#f90ba41ace81485d606e92fe9daa34bfcac80d81"
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -4354,11 +4351,6 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
-
-telefone@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/telefone/-/telefone-1.0.1.tgz#d32302c6b47c783e96065c01ba89fb0349b50ea3"
-  integrity sha512-6qIZP/CAV5qH+HhcjYIOijbTztlJ4YcYJEw0dfiwoLaAeGQ/K81fgtnhHRD+TY3D7uudulMlXYiKdxSmrUNSLg==
 
 terminal-link@^2.0.0:
   version "2.1.1"

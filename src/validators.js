@@ -1,7 +1,9 @@
-import isEmail from "is-email";
-import isCPF from "iscpf";
+import {
+  isValidEmail,
+  isValidCPF,
+  isValidPhone,
+} from "@brazilian-utils/brazilian-utils";
 import isValidBirthdate from "is-valid-birthdate";
-import telefone from "telefone";
 import memoize from "./memoize";
 import { isEmpty } from "./isEmpty";
 
@@ -16,7 +18,8 @@ export const required = (value) =>
  * E-mail.
  */
 
-export const email = (value) => !isEmail(value) && "E-mail inválido";
+export const email = (value) =>
+  !isValidEmail(value) && "E-mail inválido";
 
 /**
  * Password.
@@ -41,14 +44,14 @@ export const match = memoize(
  */
 
 export const cpf = (value) =>
-  value && !isCPF(value) && "CPF inválido";
+  value && !isValidCPF(value) && "CPF inválido";
 
 /**
  * Phone
  */
 
 export const phone = (value) =>
-  value && !telefone.parse(value) && "Telefone inválido";
+  value && !isValidPhone(value) && "Telefone inválido";
 
 /**
  * CEP.
