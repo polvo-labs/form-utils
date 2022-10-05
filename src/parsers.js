@@ -5,11 +5,6 @@
 export const digits = (value) =>
   value && value.length ? value.replace(/\D/g, "") : value;
 
-export const digitsWith = (maxLength) => (value) =>
-  value && value.length
-    ? value.replace(/\D/g, "").slice(0, maxLength)
-    : value;
-
 /**
  * Integer.
  */
