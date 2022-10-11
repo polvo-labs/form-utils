@@ -1,14 +1,19 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "2.0.1",
+  "version": "3.0.1",
   "description": "Form helpers for data validation and formatting",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "type": "module",
+  "source": "./src/index.js",
   "files": [
-    "es",
-    "lib",
-    "umd"
+    "dist"
   ],
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
   "keywords": [
     "form",
     "final-form",
@@ -18,29 +23,36 @@
     "parsers"
   ],
   "scripts": {
-    "build": "nwb build-web-module",
-    "clean": "nwb clean-module",
-    "prepublishOnly": "npm run build",
-    "test": "nwb test",
-    "test:coverage": "nwb test --coverage",
-    "test:watch": "nwb test --server"
+    "test": "jest",
+    "build": "microbundle",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "is-email": "^1.0.0",
+    "@brazilian-utils/brazilian-utils": "^1.0.0-rc.12",
     "is-valid-birthdate": "^0.1.0",
-    "iscpf": "^1.0.6",
-    "msk": "^1.0.3",
-    "telefone": "^1.0.1"
+    "msk": "^1.0.3"
   },
   "devDependencies": {
-    "nwb": "0.23.x",
-    "ramda": "^0.26.1"
-  },
-  "peerDependencies": {
-    "ramda": "^0.26.1"
+    "babel-jest": "^29.1.2",
+    "jest": "^29.1.2",
+    "microbundle": "^0.15.1"
   },
   "author": "Guilherme Santiago",
   "homepage": "https://github.com/polvo-labs/form-utils",
   "license": "MIT",
-  "repository": "https://github.com/polvo-labs/form-utils"
+  "repository": "https://github.com/polvo-labs/form-utils",
+  "jest": {
+    "setupFiles": [
+      "./tests/setupTests.js"
+    ],
+    "collectCoverageFrom": [
+      "src/*"
+    ],
+    "verbose": true,
+    "clearMocks": true,
+    "resetMocks": true,
+    "transform": {
+      "^.+\\.(js|jsx)?$": "babel-jest"
+    }
+  }
 }

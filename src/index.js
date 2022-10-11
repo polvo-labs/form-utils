@@ -1,9 +1,12 @@
 import * as validators from "./validators";
 import * as formatters from "./formatters";
 import * as parsers from "./parsers";
-import platformSelect from "./platformSelect";
+import { platformSelect } from "./platformSelect";
+import { maxChars } from "./maxChars";
 
 export { validators, formatters, parsers };
+
+export * from "./setDefaultMessages";
 
 const numberPad = platformSelect({
   web: {
@@ -14,7 +17,12 @@ const numberPad = platformSelect({
   },
 });
 
-export const createRequired = ({ parse, format, validate, ...props }) => ({
+export const createRequired = ({
+  parse,
+  format,
+  validate,
+  ...props
+}) => ({
   parse,
   format,
   validate: (value, allValues) =>
@@ -36,9 +44,11 @@ export const required = {
  * E-mail.
  */
 
+export const EMAIL_MAX_LENGTH = 255;
+
 export const email = {
   validate: validators.email,
-  maxLength: 255,
+  maxLength: EMAIL_MAX_LENGTH,
   ...platformSelect({
     web: {
       type: "email",
@@ -56,9 +66,11 @@ export const emailRequired = createRequired(email);
  * Password.
  */
 
+export const PASSWORD_MAX_LENGTH = 255;
+
 export const password = {
   validate: validators.password,
-  maxLength: 255,
+  maxLength: PASSWORD_MAX_LENGTH,
   ...platformSelect({
     web: {
       type: "password",
@@ -83,11 +95,13 @@ export const match = {
  * CPF.
  */
 
+const CPF_MAX_LENGTH = 14;
+
 export const cpf = {
-  format: formatters.cpf,
-  parse: parsers.digits,
+  format: maxChars(CPF_MAX_LENGTH, formatters.cpf),
+  parse: maxChars(CPF_MAX_LENGTH, parsers.digits),
   validate: validators.cpf,
-  maxLength: 14,
+  maxLength: CPF_MAX_LENGTH,
   ...numberPad,
 };
 
@@ -97,11 +111,13 @@ export const cpfRequired = createRequired(cpf);
  * Phone.
  */
 
+export const PHONE_MAX_LENGTH = 15;
+
 export const phone = {
-  format: formatters.phone,
-  parse: parsers.digits,
+  format: maxChars(PHONE_MAX_LENGTH, formatters.phone),
+  parse: maxChars(PHONE_MAX_LENGTH, parsers.digits),
   validate: validators.phone,
-  maxLength: 15,
+  maxLength: PHONE_MAX_LENGTH,
   ...platformSelect({
     web: {
       type: "tel",
@@ -118,11 +134,13 @@ export const phoneRequired = createRequired(phone);
  * CEP.
  */
 
+export const CEP_MAX_LENGTH = 9;
+
 export const cep = {
-  format: formatters.cep,
-  parse: parsers.digitsWith(8),
+  format: maxChars(CEP_MAX_LENGTH, formatters.cep),
+  parse: maxChars(CEP_MAX_LENGTH, parsers.digits),
   validate: validators.cep,
-  maxLength: 9,
+  maxLength: CEP_MAX_LENGTH,
   ...numberPad,
 };
 
@@ -157,25 +175,30 @@ export const integerRequired = createRequired(integer);
  * Past or current Year.
  */
 
+export const PAST_OR_CURRENT_YEAR_MAX_LENGTH = 4;
+
 export const pastOrCurrentYear = {
-  format: formatters.year,
-  parse: parsers.integer,
+  format: maxChars(PAST_OR_CURRENT_YEAR_MAX_LENGTH, formatters.year),
+  parse: maxChars(PAST_OR_CURRENT_YEAR_MAX_LENGTH, parsers.integer),
   validate: validators.pastOrCurrentYear,
-  maxLength: 4,
+  maxLength: PAST_OR_CURRENT_YEAR_MAX_LENGTH,
   ...numberPad,
 };
 
-export const pastOrCurrentYearRequired = createRequired(pastOrCurrentYear);
+export const pastOrCurrentYearRequired =
+  createRequired(pastOrCurrentYear);
 
 /**
  * Birth year.
  */
 
+export const BIRTH_YEAR_MAX_LENGTH = 4;
+
 export const birthYear = {
-  format: formatters.year,
-  parse: parsers.integer,
+  format: maxChars(BIRTH_YEAR_MAX_LENGTH, formatters.year),
+  parse: maxChars(BIRTH_YEAR_MAX_LENGTH, parsers.integer),
   validate: validators.birthYear,
-  maxLength: 4,
+  maxLength: BIRTH_YEAR_MAX_LENGTH,
   ...numberPad,
 };
 
@@ -185,9 +208,12 @@ export const birthYearRequired = createRequired(birthYear);
  * Card number.
  */
 
+export const CARD_NUMBER_MAX_LENGTH = 44;
+
 export const cardNumber = {
-  format: formatters.cardNumber,
-  parse: parsers.digits,
+  format: maxChars(CARD_NUMBER_MAX_LENGTH, formatters.cardNumber),
+  parse: maxChars(CARD_NUMBER_MAX_LENGTH, parsers.digits),
+  maxLength: CARD_NUMBER_MAX_LENGTH,
   ...platformSelect({
     web: {
       type: "tel",
@@ -205,10 +231,12 @@ export const cardNumberRequired = createRequired(cardNumber);
  * Card expiry.
  */
 
+export const CARD_EXPIRY_MAX_LENGTH = 5;
+
 export const cardExpiry = {
-  format: formatters.cardExpiry,
-  parse: parsers.digits,
-  maxLength: 5,
+  format: maxChars(CARD_EXPIRY_MAX_LENGTH, formatters.cardExpiry),
+  parse: maxChars(CARD_EXPIRY_MAX_LENGTH, parsers.digits),
+  maxLength: CARD_EXPIRY_MAX_LENGTH,
   placeholder: "MM/AA",
   ...platformSelect({
     web: {
@@ -227,9 +255,12 @@ export const cardExpiryRequired = createRequired(cardExpiry);
  * Card code.
  */
 
+const CARD_CODE_MAX_LENGTH = 4;
+
 export const cardCode = {
-  format: formatters.cardCode,
-  maxLength: 4,
+  format: maxChars(CARD_CODE_MAX_LENGTH, formatters.cardCode),
+  parse: maxChars(CARD_CODE_MAX_LENGTH, parsers.digits),
+  maxLength: CARD_CODE_MAX_LENGTH,
   ...platformSelect({
     web: {
       type: "tel",
@@ -247,11 +278,13 @@ export const cardCodeRequired = createRequired(cardCode);
  * SQL Date.
  */
 
+const SQL_DATE_MAX_LENGTH = 10;
+
 export const sqlDate = {
-  format: formatters.sqlDate,
-  parse: parsers.sqlDate,
+  format: maxChars(SQL_DATE_MAX_LENGTH, formatters.sqlDate),
+  parse: maxChars(SQL_DATE_MAX_LENGTH, parsers.sqlDate),
   validate: validators.sqlDate,
-  maxLength: 10,
+  maxLength: SQL_DATE_MAX_LENGTH,
   ...numberPad,
 };
 
@@ -261,11 +294,13 @@ export const sqlDateRequired = createRequired(sqlDate);
  * Birthdate.
  */
 
+export const BIRTH_DATE_MAX_LENGTH = 10;
+
 export const birthdate = {
-  format: formatters.sqlDate,
-  parse: parsers.sqlDate,
+  format: maxChars(BIRTH_DATE_MAX_LENGTH, formatters.sqlDate),
+  parse: maxChars(BIRTH_DATE_MAX_LENGTH, parsers.sqlDate),
   validate: validators.birthdate,
-  maxLength: 10,
+  maxLength: BIRTH_DATE_MAX_LENGTH,
   ...numberPad,
 };
 
@@ -275,13 +310,45 @@ export const birthdateRequired = createRequired(birthdate);
  * Length.
  */
 
-export const length = ({ min = 0, max = 255 }) => ({
+export const length = ({ min = 0, max = 255 } = {}) => ({
   maxLength: max,
   validate: validators.length({ min, max }),
 });
 
-export const lengthRequired = ({ min = 0, max = 255 }) => ({
+export const lengthRequired = ({ min = 0, max = 255 } = {}) => ({
   maxLength: max,
   validate: (value) =>
-    validators.required(value) || validators.length({ min, max })(value),
+    validators.required(value) ||
+    validators.length({ min, max })(value),
 });
+
+/**
+ * Bank Agency.
+ */
+
+export const BANK_AGENCY_MAX_LENGTH = 5;
+
+export const bankAgency = {
+  format: maxChars(BANK_AGENCY_MAX_LENGTH, parsers.digits),
+  parse: maxChars(BANK_AGENCY_MAX_LENGTH, parsers.digits),
+  validate: validators.bankAgency,
+  maxLength: BANK_AGENCY_MAX_LENGTH,
+  ...numberPad,
+};
+
+export const bankAgencyRequired = createRequired(bankAgency);
+
+/**
+ * Bank Account.
+ */
+
+export const BANK_ACCOUNT_MAX_LENGTH = 21;
+
+export const bankAccount = {
+  format: maxChars(BANK_ACCOUNT_MAX_LENGTH, formatters.bankAccount),
+  parse: maxChars(BANK_ACCOUNT_MAX_LENGTH, parsers.bankAccount),
+  validate: validators.bankAccount,
+  maxLength: BANK_ACCOUNT_MAX_LENGTH,
+};
+
+export const bankAccountRequired = createRequired(bankAccount);

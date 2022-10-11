@@ -1,15 +1,15 @@
-export default function memoize (fn) {
-  const cache = {}
+export default function memoize(fn) {
+  const cache = {};
 
   return function () {
-    const key = JSON.stringify(arguments)
+    const key = JSON.stringify(arguments);
 
-    if (cache[key]){
-      return cache[key]
+    if (cache[key]) {
+      return cache[key];
     }
 
-    const val = fn.apply(null, arguments)
-    cache[key] = val
-    return val
-  }
+    const val = fn.apply(null, arguments);
+    cache[key] = val;
+    return val;
+  };
 }
