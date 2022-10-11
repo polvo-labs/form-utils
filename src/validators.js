@@ -6,28 +6,28 @@ import {
 import isValidBirthdate from "is-valid-birthdate";
 import memoize from "./memoize";
 import { isEmpty } from "./isEmpty";
+import { messages } from "./ messages";
 
 /**
  * Required.
  */
 
 export const required = (value) =>
-  isEmpty(value) && "Campo obrigatório";
+  isEmpty(value) && messages.required;
 
 /**
  * E-mail.
  */
 
 export const email = (value) =>
-  !isValidEmail(value) && "E-mail inválido";
+  !isValidEmail(value) && messages.email;
 
 /**
  * Password.
  */
 
 export const password = (value) =>
-  !(value && value.length >= 6) &&
-  "Senha precisa conter pelo menos 6 caracteres";
+  !(value && value.length >= 6) && messages.password;
 
 /**
  * Match
@@ -44,28 +44,28 @@ export const match = memoize(
  */
 
 export const cpf = (value) =>
-  value && !isValidCPF(value) && "CPF inválido";
+  value && !isValidCPF(value) && messages.cpf;
 
 /**
  * Phone
  */
 
 export const phone = (value) =>
-  value && !isValidPhone(value) && "Telefone inválido";
+  value && !isValidPhone(value) && messages.phone;
 
 /**
  * CEP.
  */
 
 export const cep = (value) =>
-  value && !/^\d{8}$/.test(value) && "CEP inválido";
+  value && !/^\d{8}$/.test(value) && messages.cep;
 
 /**
  * Integer.
  */
 
 export const integer = (value) =>
-  value && parseInt(value, 10) !== value && "Número inteiro inválido";
+  value && parseInt(value, 10) !== value && messages.integer;
 
 /**
  * Past Year.
@@ -75,7 +75,7 @@ export const pastOrCurrentYear = (value) =>
   value &&
   (parseInt(value, 10) !== value ||
     value > new Date().getFullYear()) &&
-  "Este campo não aceita anos do futuro";
+  messages.pastOrCurrentYear;
 
 /**
  * Birth year.
@@ -89,7 +89,7 @@ export const birthYear = (value) => {
     (parseInt(value, 10) !== value ||
       value < min ||
       value > currentYear) &&
-    "Ano de nascimento inválido"
+    messages.birthYear
   );
 };
 
@@ -98,7 +98,7 @@ export const birthYear = (value) => {
  */
 
 export const sqlDate = (value) =>
-  value && value.length !== 10 && "Data inválida";
+  value && value.length !== 10 && messages.sqlDate;
 
 /**
  * Birthdate.
@@ -107,7 +107,7 @@ export const sqlDate = (value) =>
 export const birthdate = (value) =>
   value &&
   (value.length < 10 || !isValidBirthdate(value)) &&
-  "Data inválida";
+  messages.birthdate;
 
 /**
  * Length.
@@ -118,11 +118,11 @@ export const length = memoize(
     (value) => {
       if (value) {
         if (value.length < min) {
-          return `Campo deve ter no mínimo ${min} caracteres`;
+          return messages.length.min({ min });
         }
 
         if (value.length > max) {
-          return `Campo deve ter no máximo ${max} caracteres`;
+          return messages.length.max({ max });
         }
       }
     }
@@ -133,7 +133,7 @@ export const length = memoize(
  */
 
 export const bankAgency = (value) =>
-  value && !/^\d{4,5}$/.test(value) && "Agência inválida";
+  value && !/^\d{4,5}$/.test(value) && messages.bankAgency;
 
 /**
  * Bank Account.
@@ -142,4 +142,4 @@ export const bankAgency = (value) =>
 export const bankAccount = (value) =>
   value &&
   !(/^\d+X?$/.test(value) && value.length <= 20) &&
-  "Número da conta inválido";
+  messages.bankAccount;
