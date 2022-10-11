@@ -6,6 +6,8 @@ import { maxChars } from "./maxChars";
 
 export { validators, formatters, parsers };
 
+export * from "./setDefaultMessages";
+
 const numberPad = platformSelect({
   web: {
     type: "tel",

@@ -82,6 +82,20 @@ module.exports = {
 
 If your project is not written in TypeScript, you can omit the `ts` and `tsx` extensions.
 
+## Set default messages
+
+You can set the default validation messages with the `setDefaultMessages` function:
+
+```js
+import { setDefaultMessages } from "@polvo-labs/form-utils";
+
+// Set the default messages for `required` and `email` validators.
+setDefaultMessages({
+  required: "Este campo é obrigatório",
+  email: "Informe um e-mail válido",
+});
+```
+
 ## Available Helpers
 
 ### required
