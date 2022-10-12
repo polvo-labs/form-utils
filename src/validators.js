@@ -133,7 +133,7 @@ export const length = memoize(
  */
 
 export const bankAgency = (value) =>
-  value && !/^\d{4,5}$/.test(value) && messages.bankAgency;
+  value && !/^\d{4}$/.test(value) && messages.bankAgency;
 
 /**
  * Bank Account.

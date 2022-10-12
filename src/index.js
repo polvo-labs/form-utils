@@ -326,7 +326,7 @@ export const lengthRequired = ({ min = 0, max = 255 } = {}) => ({
  * Bank Agency.
  */
 
-export const BANK_AGENCY_MAX_LENGTH = 5;
+export const BANK_AGENCY_MAX_LENGTH = 4;
 
 export const bankAgency = {
   format: maxChars(BANK_AGENCY_MAX_LENGTH, parsers.digits),

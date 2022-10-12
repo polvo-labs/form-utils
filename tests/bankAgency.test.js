@@ -1,13 +1,13 @@
 import { bankAgency, bankAgencyRequired } from "../src";
 
-test.each(["1", "123Z", "12", "abcde", "123456"])(
+test.each(["1", "123Z", "12", "abcde", "123456", "12345"])(
   "value %j should be considered invalid",
   (input) => {
     expect(bankAgency.validate(input)).toBe("Agência inválida");
   }
 );
 
-test.each(["1234", "22005", "0001", "0000", "00000"])(
+test.each(["1234", "2200", "0001", "0000", "0000"])(
   "value %j should be consided valid",
   (input) => {
     expect(bankAgency.validate(input)).toBeFalsy();
@@ -21,19 +21,19 @@ test("bankAgencyRequired requires a value", () => {
 
 test("parses bankAgency", () => {
   expect(bankAgency.parse("1234")).toBe("1234");
-  expect(bankAgency.parse("98765")).toBe("98765");
-  expect(bankAgencyRequired.parse("123456789")).toBe("12345");
+  expect(bankAgency.parse("98765")).toBe("9876");
+  expect(bankAgencyRequired.parse("123456789")).toBe("1234");
 });
 
 test("formats bankAgency", () => {
   expect(bankAgency.format("1234")).toBe("1234");
-  expect(bankAgency.format("98765")).toBe("98765");
-  expect(bankAgencyRequired.format("123456789")).toBe("12345");
+  expect(bankAgency.format("98765")).toBe("9876");
+  expect(bankAgencyRequired.format("123456789")).toBe("1234");
 });
 
 test("sets the maxLength attribute", () => {
-  expect(bankAgency.maxLength).toBe(5);
-  expect(bankAgencyRequired.maxLength).toBe(5);
+  expect(bankAgency.maxLength).toBe(4);
+  expect(bankAgencyRequired.maxLength).toBe(4);
 });
 
 test('[web] set the attribute type="tel"', () => {
