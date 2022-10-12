@@ -3,8 +3,8 @@ import { bankAccount, bankAccountRequired } from "../src";
 test.each([
   "abc",
   "123X1",
-  "123456789098765432101",
-  "12345678909876543210X",
+  "1234567890987654321011",
+  "123456789098765432109X",
   "1234567890987654321234567899877665623423423432432423",
 ])("value %j should be considered invalid", (input) => {
   expect(bankAccount.validate(input)).toBe(
@@ -20,6 +20,7 @@ test.each([
   "00000",
   "1234X",
   "12345678909876543210",
+  "123456789098765432109",
 ])("value %j should be consided valid", (input) => {
   expect(bankAccount.validate(input)).toBeFalsy();
   expect(bankAccountRequired.validate(input)).toBeFalsy();
@@ -60,10 +61,10 @@ test("formats bankAccount", () => {
     bankAccountRequired.format(
       "0980486049802341319-3801238120931312399103"
     )
-  ).toBe("0980486049802341319-3");
+  ).toBe("09804860498023413193-8");
 });
 
 test("sets the maxLength attribute", () => {
-  expect(bankAccount.maxLength).toBe(21);
-  expect(bankAccountRequired.maxLength).toBe(21);
+  expect(bankAccount.maxLength).toBe(22);
+  expect(bankAccountRequired.maxLength).toBe(22);
 });

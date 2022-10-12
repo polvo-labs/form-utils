@@ -342,11 +342,11 @@ export const bankAgencyRequired = createRequired(bankAgency);
  * Bank Account.
  */
 
-export const BANK_ACCOUNT_MAX_LENGTH = 21;
+export const BANK_ACCOUNT_MAX_LENGTH = 22;
 
 export const bankAccount = {
-  format: maxChars(BANK_ACCOUNT_MAX_LENGTH, formatters.bankAccount),
-  parse: maxChars(BANK_ACCOUNT_MAX_LENGTH, parsers.bankAccount),
+  format: formatters.bankAccount,
+  parse: parsers.bankAccount,
   validate: validators.bankAccount,
   maxLength: BANK_ACCOUNT_MAX_LENGTH,
 };

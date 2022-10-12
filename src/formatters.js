@@ -1,5 +1,5 @@
 import { fit } from "msk";
-import { digits } from "./parsers";
+import * as parsers from "./parsers";
 
 /**
  * CPF.
@@ -89,6 +89,8 @@ export const sqlDate = (value = "") => {
  */
 
 export const bankAccount = (value = "") => {
+  const transformedValue = parsers.bankAccount(value);
+
   const addDash = (account) => {
     if (account.length > 1) {
       const firstPart = account.slice(0, -1);
@@ -99,8 +101,8 @@ export const bankAccount = (value = "") => {
     return account;
   };
 
-  const lastItem = value.slice(-1).toUpperCase();
-  const otherPart = digits(value.slice(0, -1));
+  const lastItem = transformedValue.slice(-1).toUpperCase();
+  const otherPart = parsers.digits(transformedValue.slice(0, -1));
   return /X|\d/.test(lastItem)
     ? addDash(otherPart + lastItem)
     : addDash(otherPart);

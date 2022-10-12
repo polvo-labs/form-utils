@@ -35,7 +35,11 @@ export const sqlDate = (value = "") => {
  */
 
 export const bankAccount = (value = "") => {
-  const lastItem = value.slice(-1).toUpperCase();
-  const otherPart = digits(value.slice(0, -1));
+  const transformedValue = value
+    .replace(/[^0-9xX]/g, "")
+    .slice(0, 21);
+
+  const lastItem = transformedValue.slice(-1).toUpperCase();
+  const otherPart = digits(transformedValue.slice(0, -1));
   return /X|\d/.test(lastItem) ? otherPart + lastItem : otherPart;
 };

@@ -141,5 +141,5 @@ export const bankAgency = (value) =>
 
 export const bankAccount = (value) =>
   value &&
-  !(/^\d+X?$/.test(value) && value.length <= 20) &&
+  !(/^\d+X?$/.test(value) && value.length <= 21) &&
   messages.bankAccount;
