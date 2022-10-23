@@ -1,4 +1,5 @@
 import { bankAgency, bankAgencyRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each(["1", "123Z", "12", "abcde", "123456", "12345"])(
   "value %j should be considered invalid",
@@ -38,12 +39,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(bankAgency.web.type).toBe("tel");
-  expect(bankAgencyRequired.web.type).toBe("tel");
+  expect(getAttrs(bankAgencyRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(bankAgency.reactNative.keyboardType).toBe("number-pad");
-  expect(bankAgencyRequired.reactNative.keyboardType).toBe(
+  expect(getAttrs(bankAgencyRequired).reactNative.keyboardType).toBe(
     "number-pad"
   );
 });

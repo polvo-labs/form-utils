@@ -1,4 +1,5 @@
 import { cardNumber, cardNumberRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test("cardNumber does not have validation", () => {
   expect(cardNumber.validate).toBeUndefined();
@@ -41,12 +42,12 @@ test("[web] set the correct attributes for card number data", () => {
   };
 
   expect(cardNumber.web).toEqual(attrs);
-  expect(cardNumberRequired.web).toEqual(attrs);
+  expect(getAttrs(cardNumberRequired).web).toEqual(attrs);
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(cardNumber.reactNative.keyboardType).toBe("number-pad");
-  expect(cardNumberRequired.reactNative.keyboardType).toBe(
+  expect(getAttrs(cardNumberRequired).reactNative.keyboardType).toBe(
     "number-pad"
   );
 });

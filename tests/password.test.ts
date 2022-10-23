@@ -1,4 +1,5 @@
 import { password, passwordRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each(["abc", ""])(
   "value %j should be considered invalid",
@@ -23,10 +24,12 @@ test("passwordRequired requires a value", () => {
 
 test('[web] set the attribute type="password"', () => {
   expect(password.web.type).toBe("password");
-  expect(passwordRequired.web.type).toBe("password");
+  expect(getAttrs(passwordRequired).web.type).toBe("password");
 });
 
 test("[react native] set the prop secureTextEntry", () => {
   expect(password.reactNative.secureTextEntry).toBe(true);
-  expect(passwordRequired.reactNative.secureTextEntry).toBe(true);
+  expect(getAttrs(passwordRequired).reactNative.secureTextEntry).toBe(
+    true
+  );
 });

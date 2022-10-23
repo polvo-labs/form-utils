@@ -1,11 +1,11 @@
-import { fit } from "msk";
+import msk from "msk";
 import * as parsers from "./parsers";
 
 /**
  * CPF.
  */
 
-export const cpf = (value = "") => fit(value, "999.999.999-99");
+export const cpf = (value = "") => msk.fit(value, "999.999.999-99");
 
 /**
  * Phone.
@@ -13,14 +13,14 @@ export const cpf = (value = "") => fit(value, "999.999.999-99");
 
 export const phone = (value = "") =>
   value.length === 11
-    ? fit(value, "(99) 99999-9999")
-    : fit(value, "(99) 9999-9999");
+    ? msk.fit(value, "(99) 99999-9999")
+    : msk.fit(value, "(99) 9999-9999");
 
 /**
  * CEP.
  */
 
-export const cep = (value = "") => fit(value, "99999-999");
+export const cep = (value = "") => msk.fit(value, "99999-999");
 
 /**
  * Currency.
@@ -37,13 +37,13 @@ export const currency = (value = "") =>
  * Integer.
  */
 
-export const integer = (value = "") => fit(value, "999999999999");
+export const integer = (value = "") => msk.fit(value, "999999999999");
 
 /**
  * Year.
  */
 
-export const year = (value = "") => fit(value, "9999");
+export const year = (value = "") => msk.fit(value, "9999");
 
 /**
  * Card Number.
@@ -51,20 +51,20 @@ export const year = (value = "") => fit(value, "9999");
 
 export const cardNumber = (value = "") =>
   /^(37|34)/.test(value)
-    ? fit(value, "9999 999999 99999")
-    : fit(value, "9999 9999 9999 9999 9999 9999 9999 9999 9999");
+    ? msk.fit(value, "9999 999999 99999")
+    : msk.fit(value, "9999 9999 9999 9999 9999 9999 9999 9999 9999");
 
 /**
  * Card expiry.
  */
 
-export const cardExpiry = (value = "") => fit(value, "99/99");
+export const cardExpiry = (value = "") => msk.fit(value, "99/99");
 
 /**
  * Card code.
  */
 
-export const cardCode = (value = "") => fit(value, "9999");
+export const cardCode = (value = "") => msk.fit(value, "9999");
 
 /**
  * SQL Date.
@@ -81,7 +81,7 @@ export const sqlDate = (value = "") => {
     return `${day}/${month}/${year}`;
   }
 
-  return fit(value, "99/99/9999");
+  return msk.fit(value, "99/99/9999");
 };
 
 /**
@@ -91,7 +91,7 @@ export const sqlDate = (value = "") => {
 export const bankAccount = (value = "") => {
   const transformedValue = parsers.bankAccount(value);
 
-  const addDash = (account) => {
+  const addDash = (account: string) => {
     if (account.length > 1) {
       const firstPart = account.slice(0, -1);
       const secondPart = account.slice(-1);

@@ -1,4 +1,5 @@
 import { cpf, cpfRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each([
   "443883666554",
@@ -42,10 +43,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(cpf.web.type).toBe("tel");
-  expect(cpfRequired.web.type).toBe("tel");
+  expect(getAttrs(cpfRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(cpf.reactNative.keyboardType).toBe("number-pad");
-  expect(cpfRequired.reactNative.keyboardType).toBe("number-pad");
+  expect(getAttrs(cpfRequired).reactNative.keyboardType).toBe(
+    "number-pad"
+  );
 });

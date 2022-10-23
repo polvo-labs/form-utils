@@ -1,4 +1,10 @@
-export function platformSelect(select = {}) {
+export interface PlatformSelectOptions {
+  web?: any;
+  reactNative?: any;
+  node?: any;
+}
+
+export function platformSelect(select: PlatformSelectOptions = {}) {
   if (typeof document !== "undefined") {
     return select.web;
   }

@@ -1,4 +1,5 @@
 import { cep, cepRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each([
   "41333",
@@ -40,10 +41,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(cep.web.type).toBe("tel");
-  expect(cepRequired.web.type).toBe("tel");
+  expect(getAttrs(cepRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(cep.reactNative.keyboardType).toBe("number-pad");
-  expect(cepRequired.reactNative.keyboardType).toBe("number-pad");
+  expect(getAttrs(cepRequired).reactNative.keyboardType).toBe(
+    "number-pad"
+  );
 });

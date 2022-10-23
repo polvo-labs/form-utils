@@ -12,8 +12,10 @@ export const messages = {
   sqlDate: "Data inválida",
   birthdate: "Data inválida",
   length: {
-    min: ({ min }) => `Campo deve ter no mínimo ${min} caracteres`,
-    max: ({ max }) => `Campo deve ter no máximo ${max} caracteres`,
+    min: ({ min }: { min: number }) =>
+      `Campo deve ter no mínimo ${min} caracteres`,
+    max: ({ max }: { max: number }) =>
+      `Campo deve ter no máximo ${max} caracteres`,
   },
   bankAgency: "Agência inválida",
   bankAccount: "Número da conta inválido",

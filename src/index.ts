@@ -3,6 +3,7 @@ import * as formatters from "./formatters";
 import * as parsers from "./parsers";
 import { platformSelect } from "./platformSelect";
 import { maxChars } from "./maxChars";
+import { AllValues, Value } from "./types";
 
 export { validators, formatters, parsers };
 
@@ -17,15 +18,22 @@ const numberPad = platformSelect({
   },
 });
 
+export interface CreateRequiredOptions {
+  parse: (value: Value) => Value;
+  format: (value: Value) => Value;
+  validate: (value: Value, allValues?: AllValues) => string | null;
+  maxLength?: number;
+}
+
 export const createRequired = ({
   parse,
   format,
   validate,
   ...props
-}) => ({
+}: CreateRequiredOptions) => ({
   parse,
   format,
-  validate: (value, allValues) =>
+  validate: (value: Value, allValues?: AllValues) =>
     validate
       ? validators.required(value) || validate(value, allValues)
       : validators.required(value),
@@ -317,7 +325,7 @@ export const length = ({ min = 0, max = 255 } = {}) => ({
 
 export const lengthRequired = ({ min = 0, max = 255 } = {}) => ({
   maxLength: max,
-  validate: (value) =>
+  validate: (value: Value) =>
     validators.required(value) ||
     validators.length({ min, max })(value),
 });

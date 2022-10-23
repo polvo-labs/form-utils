@@ -1,4 +1,5 @@
 import { currency, currencyRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test("currency does not have a validator", () => {
   expect(currency.validate).toBeUndefined();
@@ -22,12 +23,12 @@ test("formats cep", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(currency.web.type).toBe("tel");
-  expect(currencyRequired.web.type).toBe("tel");
+  expect(getAttrs(currencyRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(currency.reactNative.keyboardType).toBe("number-pad");
-  expect(currencyRequired.reactNative.keyboardType).toBe(
+  expect(getAttrs(currencyRequired).reactNative.keyboardType).toBe(
     "number-pad"
   );
 });

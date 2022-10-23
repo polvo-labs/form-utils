@@ -1,4 +1,5 @@
 import { phone, phoneRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each([
   "41333",
@@ -40,10 +41,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(phone.web.type).toBe("tel");
-  expect(phoneRequired.web.type).toBe("tel");
+  expect(getAttrs(phoneRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(phone.reactNative.keyboardType).toBe("phone-pad");
-  expect(phoneRequired.reactNative.keyboardType).toBe("phone-pad");
+  expect(getAttrs(phoneRequired).reactNative.keyboardType).toBe(
+    "phone-pad"
+  );
 });

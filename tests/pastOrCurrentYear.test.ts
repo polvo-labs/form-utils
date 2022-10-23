@@ -1,4 +1,5 @@
 import { pastOrCurrentYear, pastOrCurrentYearRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each(["banana", "1", 20000, 3000, 2023])(
   "value %j should be considered invalid",
@@ -40,14 +41,14 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(pastOrCurrentYear.web.type).toBe("tel");
-  expect(pastOrCurrentYearRequired.web.type).toBe("tel");
+  expect(getAttrs(pastOrCurrentYearRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(pastOrCurrentYear.reactNative.keyboardType).toBe(
     "number-pad"
   );
-  expect(pastOrCurrentYearRequired.reactNative.keyboardType).toBe(
-    "number-pad"
-  );
+  expect(
+    getAttrs(pastOrCurrentYearRequired).reactNative.keyboardType
+  ).toBe("number-pad");
 });

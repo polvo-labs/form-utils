@@ -1,4 +1,5 @@
 import { birthdate, birthdateRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each([
   "10/06/19",
@@ -41,12 +42,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(birthdate.web.type).toBe("tel");
-  expect(birthdateRequired.web.type).toBe("tel");
+  expect(getAttrs(birthdateRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(birthdate.reactNative.keyboardType).toBe("number-pad");
-  expect(birthdateRequired.reactNative.keyboardType).toBe(
+  expect(getAttrs(birthdateRequired).reactNative.keyboardType).toBe(
     "number-pad"
   );
 });

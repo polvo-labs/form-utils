@@ -1,4 +1,5 @@
 import { cardExpiry, cardExpiryRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test("cardExpiry does not have validation", () => {
   expect(cardExpiry.validate).toBeUndefined();
@@ -29,12 +30,12 @@ test("[web] set the correct attributes for card expiry data", () => {
   };
 
   expect(cardExpiry.web).toEqual(attrs);
-  expect(cardExpiryRequired.web).toEqual(attrs);
+  expect(getAttrs(cardExpiryRequired).web).toEqual(attrs);
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(cardExpiry.reactNative.keyboardType).toBe("number-pad");
-  expect(cardExpiryRequired.reactNative.keyboardType).toBe(
+  expect(getAttrs(cardExpiryRequired).reactNative.keyboardType).toBe(
     "number-pad"
   );
 });

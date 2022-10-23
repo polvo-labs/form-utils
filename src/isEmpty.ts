@@ -1,4 +1,4 @@
-export function isEmpty(value) {
+export function isEmpty(value: unknown) {
   if (typeof value === "string") {
     return value.trim() === "";
   }

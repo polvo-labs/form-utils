@@ -1,5 +1,7 @@
-export default function memoize(fn) {
-  const cache = {};
+export default function memoize<T = any>(
+  fn: Function
+): (args: T) => any {
+  const cache: Record<string, any> = {};
 
   return function () {
     const key = JSON.stringify(arguments);

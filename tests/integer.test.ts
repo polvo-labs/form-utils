@@ -1,4 +1,5 @@
 import { integer, integerRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each(["abc", "X", "numero10", "13b"])(
   "value %j should be considered invalid",
@@ -31,10 +32,12 @@ test("formats integer", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(integer.web.type).toBe("tel");
-  expect(integerRequired.web.type).toBe("tel");
+  expect(getAttrs(integerRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(integer.reactNative.keyboardType).toBe("number-pad");
-  expect(integerRequired.reactNative.keyboardType).toBe("number-pad");
+  expect(getAttrs(integerRequired).reactNative.keyboardType).toBe(
+    "number-pad"
+  );
 });

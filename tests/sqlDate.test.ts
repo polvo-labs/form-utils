@@ -1,4 +1,5 @@
 import { sqlDate, sqlDateRequired } from "../src";
+import { getAttrs } from "../test-utils";
 
 test.each([
   "10/06/19",
@@ -40,10 +41,12 @@ test("sets the maxLength attribute", () => {
 
 test('[web] set the attribute type="tel"', () => {
   expect(sqlDate.web.type).toBe("tel");
-  expect(sqlDateRequired.web.type).toBe("tel");
+  expect(getAttrs(sqlDateRequired).web.type).toBe("tel");
 });
 
 test('[react native] set the prop keyboardType="number-pad"', () => {
   expect(sqlDate.reactNative.keyboardType).toBe("number-pad");
-  expect(sqlDateRequired.reactNative.keyboardType).toBe("number-pad");
+  expect(getAttrs(sqlDateRequired).reactNative.keyboardType).toBe(
+    "number-pad"
+  );
 });
