@@ -21,7 +21,10 @@ const numberPad = platformSelect({
 export interface CreateRequiredOptions {
   parse: (value: Value) => Value;
   format: (value: Value) => Value;
-  validate: (value: Value, allValues?: AllValues) => string | null;
+  validate: (
+    value: Value,
+    allValues?: AllValues
+  ) => string | undefined;
   maxLength?: number;
 }
 

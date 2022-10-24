@@ -9,22 +9,25 @@ import { messages } from "./messages";
 import { Value, AllValues } from "./types";
 import { isValidBirthdate } from "./isValidBirthdate";
 
+const validate = (result: string | boolean): string | undefined =>
+  typeof result === "string" ? result : undefined;
+
 export const required = (value: Value) =>
-  isEmpty(value) && messages.required;
+  validate(isEmpty(value) && messages.required);
 
 /**
  * E-mail.
  */
 
 export const email = (value: Value) =>
-  !isValidEmail(value) && messages.email;
+  validate(!isValidEmail(value) && messages.email);
 
 /**
  * Password.
  */
 
 export const password = (value: Value) =>
-  !(value && value.length >= 6) && messages.password;
+  validate(!(value && value.length >= 6) && messages.password);
 
 /**
  * Match
@@ -38,7 +41,7 @@ export interface MatchOptions {
 export const match = memoize(
   ({ field, message = "Campos não batem" }: MatchOptions) =>
     (value: Value, allValues: AllValues) =>
-      value !== allValues[field] && message
+      validate(value !== allValues[field] && message)
 );
 
 /**
@@ -46,38 +49,42 @@ export const match = memoize(
  */
 
 export const cpf = (value: Value) =>
-  value && !isValidCPF(value) && messages.cpf;
+  validate(value && !isValidCPF(value) && messages.cpf);
 
 /**
  * Phone
  */
 
 export const phone = (value: Value) =>
-  value && !isValidPhone(value) && messages.phone;
+  validate(value && !isValidPhone(value) && messages.phone);
 
 /**
  * CEP.
  */
 
 export const cep = (value: Value) =>
-  value && !/^\d{8}$/.test(value) && messages.cep;
+  validate(value && !/^\d{8}$/.test(value) && messages.cep);
 
 /**
  * Integer.
  */
 
 export const integer = (value: Value) =>
-  value && parseInt(value, 10) !== value && messages.integer;
+  validate(
+    value && parseInt(value, 10) !== value && messages.integer
+  );
 
 /**
  * Past Year.
  */
 
 export const pastOrCurrentYear = (value: Value) =>
-  value &&
-  (parseInt(value, 10) !== value ||
-    value > new Date().getFullYear()) &&
-  messages.pastOrCurrentYear;
+  validate(
+    value &&
+      (parseInt(value, 10) !== value ||
+        value > new Date().getFullYear()) &&
+      messages.pastOrCurrentYear
+  );
 
 /**
  * Birth year.
@@ -86,12 +93,12 @@ export const pastOrCurrentYear = (value: Value) =>
 export const birthYear = (value: Value) => {
   const currentYear = new Date().getFullYear();
   const min = currentYear - 130;
-  return (
+  return validate(
     value &&
-    (parseInt(value, 10) !== value ||
-      value < min ||
-      value > currentYear) &&
-    messages.birthYear
+      (parseInt(value, 10) !== value ||
+        value < min ||
+        value > currentYear) &&
+      messages.birthYear
   );
 };
 
@@ -100,16 +107,18 @@ export const birthYear = (value: Value) => {
  */
 
 export const sqlDate = (value: Value) =>
-  value && value.length !== 10 && messages.sqlDate;
+  validate(value && value.length !== 10 && messages.sqlDate);
 
 /**
  * Birthdate.
  */
 
 export const birthdate = (value: Value) =>
-  value &&
-  (value.length < 10 || !isValidBirthdate(new Date(value))) &&
-  messages.birthdate;
+  validate(
+    value &&
+      (value.length < 10 || !isValidBirthdate(new Date(value))) &&
+      messages.birthdate
+  );
 
 /**
  * Length.
@@ -140,13 +149,15 @@ export const length = memoize<LengthOptions>(
  */
 
 export const bankAgency = (value: Value) =>
-  value && !/^\d{4}$/.test(value) && messages.bankAgency;
+  validate(value && !/^\d{4}$/.test(value) && messages.bankAgency);
 
 /**
  * Bank Account.
  */
 
 export const bankAccount = (value: Value) =>
-  value &&
-  !(/^\d+X?$/.test(value) && value.length <= 21) &&
-  messages.bankAccount;
+  validate(
+    value &&
+      !(/^\d+X?$/.test(value) && value.length <= 21) &&
+      messages.bankAccount
+  );
