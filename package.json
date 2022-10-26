@@ -1,6 +1,6 @@
 {
   "name": "@polvo-labs/form-utils",
-  "version": "3.1.0-alpha.1",
+  "version": "3.1.0",
   "description": "Form helpers for data validation and formatting",
   "files": [
     "dist"
