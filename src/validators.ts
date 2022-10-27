@@ -158,6 +158,10 @@ export const bankAgency = (value: Value) =>
 export const bankAccount = (value: Value) =>
   validate(
     value &&
-      !(/^\d+X?$/.test(value) && value.length <= 21) &&
+      !(
+        /^\d+X?$/.test(value) &&
+        value.length > 1 &&
+        value.length <= 21
+      ) &&
       messages.bankAccount
   );

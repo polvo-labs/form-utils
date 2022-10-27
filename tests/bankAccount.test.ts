@@ -2,6 +2,7 @@ import { bankAccount, bankAccountRequired } from "../src";
 
 test.each([
   "abc",
+  "1",
   "123X1",
   "1234567890987654321011",
   "123456789098765432109X",
@@ -13,6 +14,7 @@ test.each([
 });
 
 test.each([
+  "12",
   "1234",
   "22005",
   "0001",
