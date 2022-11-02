@@ -32,6 +32,7 @@ test("parses phone", () => {
 test("formats phone", () => {
   expect(phone.format("43972465646")).toBe("(43) 97246-5646");
   expect(phoneRequired.format("1135571920")).toBe("(11) 3557-1920");
+  expect(phone.format("043972465646")).toBe("(43) 97246-5646");
 });
 
 test("sets the maxLength attribute", () => {

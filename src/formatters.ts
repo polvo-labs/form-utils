@@ -11,10 +11,13 @@ export const cpf = (value = "") => msk.fit(value, "999.999.999-99");
  * Phone.
  */
 
-export const phone = (value = "") =>
-  value.length === 11
-    ? msk.fit(value, "(99) 99999-9999")
-    : msk.fit(value, "(99) 9999-9999");
+export const phone = (value = "") => {
+  const newValue = value[0] === "0" ? value.slice(1) : value;
+
+  return newValue.length === 11
+    ? msk.fit(newValue, "(99) 99999-9999")
+    : msk.fit(newValue, "(99) 9999-9999");
+};
 
 /**
  * CEP.
